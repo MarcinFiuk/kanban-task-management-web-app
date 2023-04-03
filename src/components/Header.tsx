@@ -12,26 +12,28 @@ type HeaderProps = { darkMode: boolean };
 const Header = (props: HeaderProps) => {
     const { darkMode } = props;
     return (
-        <header className='grid grid-cols-header p-4 items-center gap-4 last:mr-2'>
+        <header className='grid grid-cols-headerMobile md:grid-cols-headerDesktop p-4 md:px-6 items-center gap-4 md:gap-6 '>
             <Logo darkMode={darkMode} />
 
             <div className='flex items-center gap-2'>
-                <h1>Platform Launch</h1>
+                <h1 className='text-headingL md:text-headingXL lg:text-headingXXL'>
+                    Platform Launch
+                </h1>
                 <div className='md:hidden'>
                     <img src={Chevron} alt='chevron' />
                 </div>
             </div>
-            <div>
-                <ButtonPrimary classes='md:hidden py-2.5 bg-mainPurple'>
+            <div className='flex'>
+                <ButtonPrimary classes='md:hidden py-2.5 bg-mainPurple w-12'>
                     <img src={AddTask} alt='add task' />
                 </ButtonPrimary>
-                <ButtonPrimary classes='hidden md:block  bg-mainPurple'>
+                <ButtonPrimary classes='hidden md:block  bg-mainPurple w-41'>
                     + Add New Task
                 </ButtonPrimary>{' '}
+                <ButtonPrimary classes='py-2 w-5 md:w-7'>
+                    <img src={Ellipsis} alt='ellipsis' className='h-4 md:h-5' />
+                </ButtonPrimary>
             </div>
-            <ButtonPrimary classes='py-2'>
-                <img src={Ellipsis} alt='ellipsis' className='h-4 md:h-5' />
-            </ButtonPrimary>
         </header>
     );
 };

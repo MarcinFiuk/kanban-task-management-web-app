@@ -21,7 +21,8 @@ export default {
             body: '"Plus Jakarta Sans", Roboto, sans-serif',
         },
         fontSize: {
-            headingXL: '1.5rem',
+            headingXXL: '1.5rem',
+            headingXL: '1.25rem',
             headingL: '1.125rem',
             headingM: ['0.9375rem', '1.27'],
             headingS: ['0.75rem', { letterSpacing: '0.15em' }],
@@ -31,8 +32,15 @@ export default {
         lineHeight: {
             l: '1.25',
         },
-        gridTemplateColumns: { header: '24px 1fr 48px 4px' },
-        extend: {},
+        gridTemplateColumns: {
+            headerMobile: '24px 1fr 68px',
+            headerDesktop: '260px 1fr 193px',
+        },
+        extend: {
+            spacing: {
+                41: '164px',
+            },
+        },
     },
     plugins: [],
 };
