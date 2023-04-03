@@ -23,7 +23,7 @@ export default {
         fontSize: {
             headingXL: '1.5rem',
             headingL: '1.125rem',
-            headingM: '0.9375rem',
+            headingM: ['0.9375rem', '1.27'],
             headingS: ['0.75rem', { letterSpacing: '0.15em' }],
             bodyL: '0.8125rem',
             bodyM: '0.75rem',
@@ -31,6 +31,7 @@ export default {
         lineHeight: {
             l: '1.25',
         },
+        gridTemplateColumns: { header: '24px 1fr 48px 4px' },
         extend: {},
     },
     plugins: [],
