@@ -8,14 +8,14 @@ export default {
             mainPurple: '#635FC7',
             mainPureLight: '#A8A4FF',
             red: '#EA5555',
-            redLight: '',
+            redLight: '#FF9898',
             black: '#000112',
             veryDarkGrey: '#20212C',
             darkGrey: '#2B2C37',
             mediumGrey: '#828FA3',
-            grayLight: '#E4EBFA',
+            grayLight: '#F4F7FD',
             lines: '#3E3F4E',
-            linesLight: '#FF9898',
+            linesLight: '#E4EBFA',
         },
         fontFamily: {
             body: '"Plus Jakarta Sans", Roboto, sans-serif',
@@ -34,7 +34,8 @@ export default {
         },
         gridTemplateColumns: {
             headerMobile: '24px 1fr 68px',
-            headerDesktop: '260px 1fr 193px',
+            headerTablet: '260px 1fr 193px',
+            headerDesktop: '300px 1fr 193px',
         },
         extend: {
             spacing: {
