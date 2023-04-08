@@ -3,37 +3,50 @@
 import ButtonPrimary from './ButtonPrimary';
 import Logo from './Logo';
 
-import AddTask from './../assets/icon-add-task-mobile.svg';
-import Ellipsis from './../assets/icon-vertical-ellipsis.svg';
-import Chevron from './../assets/icon-chevron-down.svg';
+import AddTaskIcon from './../assets/icon-add-task-mobile.svg';
+import EllipsisIcon from './../assets/icon-vertical-ellipsis.svg';
+import ChevronIcon from './../assets/icon-chevron-down.svg';
 
 type HeaderProps = { darkMode: boolean };
 
 const Header = (props: HeaderProps) => {
     const { darkMode } = props;
+
+    //NOTE: potential solution for animation
+    const a = 'md:w-[201px]';
+    const b = 'md:w-[300px]';
+
     return (
-        <header className='grid grid-cols-headerMobile md:grid-cols-headerTablet lg:grid-cols-headerDesktop  items-center gap-4 md:gap-6 border-b border-b-linesLight px-4 md:px-6'>
-            <div className='flex items-center md:border-r md:border-r-linesLight h-full py-4'>
+        <header
+            className={`flex flex-nowrap  gap-4 md:gap-6 border-b 2xl:border-x border-linesLight px-4 md:px-6`}
+        >
+            <div
+                className={`flex items-center w-6  ${b} duration-500  md:border-r md:border-r-linesLight`}
+            >
                 <Logo darkMode={darkMode} />
             </div>
 
-            <div className='flex items-center gap-2 py-4'>
+            <div className='flex flex-grow items-center gap-2'>
                 <h1 className='text-headingL md:text-headingXL lg:text-headingXXL'>
                     Platform Launch
                 </h1>
                 <div className='md:hidden'>
-                    <img src={Chevron} alt='chevron' />
+                    <img src={ChevronIcon} alt='chevron' />
                 </div>
             </div>
-            <div className='flex py-4 '>
-                <ButtonPrimary classes='md:hidden py-2.5 bg-mainPurple w-12'>
-                    <img src={AddTask} alt='add task' />
+            <div className='flex py-4 w-[68px] md:w-[193px]'>
+                <ButtonPrimary classes='md:hidden py-2.5 bg-mainPurple basis-12'>
+                    <img src={AddTaskIcon} alt='add task' />
                 </ButtonPrimary>
                 <ButtonPrimary classes='hidden md:block  bg-mainPurple w-41'>
                     + Add New Task
-                </ButtonPrimary>{' '}
-                <ButtonPrimary classes='py-2 w-5 md:w-7'>
-                    <img src={Ellipsis} alt='ellipsis' className='h-4 md:h-5' />
+                </ButtonPrimary>
+                <ButtonPrimary classes='py-2 basis-5 md:w-7'>
+                    <img
+                        src={EllipsisIcon}
+                        alt='ellipsis'
+                        className='h-4 md:h-5'
+                    />
                 </ButtonPrimary>
             </div>
         </header>

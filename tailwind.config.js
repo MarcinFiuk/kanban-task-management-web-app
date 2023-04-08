@@ -25,7 +25,7 @@ export default {
             headingXL: '1.25rem',
             headingL: '1.125rem',
             headingM: ['0.9375rem', '1.27'],
-            headingS: ['0.75rem', { letterSpacing: '0.15em' }],
+            headingS: ['0.75rem', { letterSpacing: '0.12em' }],
             bodyL: '0.8125rem',
             bodyM: '0.75rem',
         },
@@ -34,12 +34,16 @@ export default {
         },
         gridTemplateColumns: {
             headerMobile: '24px 1fr 68px',
-            headerTablet: '260px 1fr 193px',
-            headerDesktop: '300px 1fr 193px',
+            headerTablet: '201px 1fr 193px',
+            headerTabletOpen: '260px 1fr 193px',
+            headerDesktopOpen: '300px 1fr 193px',
         },
         extend: {
             spacing: {
                 41: '164px',
+            },
+            boxShadow: {
+                custom: '0 10px 20px 0 rgba(54, 78, 126, 0.25)',
             },
         },
     },
