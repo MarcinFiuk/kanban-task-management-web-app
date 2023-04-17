@@ -41,6 +41,12 @@ export default {
         extend: {
             spacing: {
                 41: '164px',
+                46: '11.625rem',
+                50: '12.5rem',
+                59: '14.75rem',
+                65: '16.25rem',
+                69: '17.25rem',
+                75: '18.75rem',
             },
             boxShadow: {
                 custom: '0 10px 20px 0 rgba(54, 78, 126, 0.25)',

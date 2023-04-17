@@ -2,32 +2,37 @@ import BoardIcon from '../assets/icon-board.svg';
 import LightModeIcon from '../assets/icon-light-theme.svg';
 import DarkModeIcon from '../assets/icon-dark-theme.svg';
 
-type NavProps = { darkMode: boolean };
+type NavProps = { darkMode: boolean; isOpen: boolean };
 
 const Navigation = (props: NavProps) => {
-    const { darkMode } = props;
+    const { darkMode, isOpen } = props;
 
     return (
         <div className='absolute left-1/2 top-20 -translate-x-1/2'>
-            <div className='min-w-fit bg-white rounded-lg py-4 shadow-custom '>
+            <div
+                className={`min-w-fit bg-white rounded-lg py-4 shadow-custom ${
+                    isOpen
+                        ? 'scale-y-100 -translate-y-0'
+                        : 'scale-y-0 -translate-y-4'
+                } duration-500 origin-top`}
+            >
                 <div className='text-headingS text-mediumGrey mb-4'>
                     <p className='uppercase ps-6 mb-5 tracking-[0.2em]'>
                         all boards (3)
                     </p>
-                    <div className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
-                        <img src={BoardIcon} alt='BoardIcon' />
+                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
+                        <img src={BoardIcon} alt='' role='none' />
                         <p>Platform Lunch1</p>
-                    </div>
-                    <div className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
-                        <img src={BoardIcon} alt='BoardIcon' />
+                    </button>
+                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
+                        <img src={BoardIcon} alt='' role='none' />
                         Platform Lunch2
-                    </div>
-                    <div className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
-                        <img src={BoardIcon} alt='BoardIcon' />
+                    </button>
+                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
+                        <img src={BoardIcon} alt='' role='none' />
                         Platform Lunch3
-                    </div>
-
-                    <div className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full capitalize text-mainPurple'>
+                    </button>
+                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full capitalize text-mainPurple'>
                         <svg
                             width='16'
                             height='16'
@@ -39,7 +44,7 @@ const Navigation = (props: NavProps) => {
                             />
                         </svg>
                         + Create New Board
-                    </div>
+                    </button>
                 </div>
                 <div className=' flex  justify-center items-center w-60 h-12 rounded-md bg-grayLight ms-4 me-3'>
                     <label htmlFor='light' className=''>
@@ -49,16 +54,12 @@ const Navigation = (props: NavProps) => {
                         type='checkbox'
                         name='darkLightMode'
                         id={darkMode ? 'dark' : 'light'}
-                        // onChange={() => }
-                        className='absolute opacity-0 -top-96 -left-96'
+                        // onChange={()={}}
+                        className='toggle'
                     />
                     <label
                         htmlFor='dark'
-                        className={`relative flex cursor-pointer before:w-10 before:h-5 before:mx-6 before:bg-mainPurple before:rounded-xl after:absolute after:top-[0.1875rem] after:left-[0.1875rem] after:w-3.5 after:h-3.5 after:mx-6 after:bg-white after:rounded-full ${
-                            darkMode
-                                ? 'after:translate-x-0'
-                                : 'after:translate-x-5'
-                        } after:duration-300`}
+                        className='relative flex cursor-pointer'
                     >
                         <img src={DarkModeIcon} alt='DarkModeIcon' />
                     </label>
