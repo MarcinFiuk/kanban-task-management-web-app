@@ -1,38 +1,43 @@
 import BoardIcon from '../assets/icon-board.svg';
 import LightModeIcon from '../assets/icon-light-theme.svg';
 import DarkModeIcon from '../assets/icon-dark-theme.svg';
+import HideNavbar from '../assets/icon-hide-sidebar.svg';
 
-type NavProps = { darkMode: boolean; isOpen: boolean };
+type NavProps = {
+    darkMode: boolean;
+    isOpen: boolean;
+    setCloseNav: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const Navigation = (props: NavProps) => {
-    const { darkMode, isOpen } = props;
+    const { darkMode, isOpen, setCloseNav } = props;
 
     return (
-        <div className='absolute left-1/2 top-20 -translate-x-1/2'>
+        <div className='absolute left-1/2 md:left-0 top-20 md:top-[68px] -translate-x-1/2 md:translate-x-0'>
             <div
-                className={`min-w-fit bg-white rounded-lg py-4 shadow-custom ${
+                className={`flex flex-col min-w-fit md:min-h-[calc(100vh_-_68px)] bg-white rounded-lg md:rounded-none py-4 shadow-custom md:shadow-none ${
                     isOpen
                         ? 'scale-y-100 -translate-y-0'
                         : 'scale-y-0 -translate-y-4'
                 } duration-500 origin-top`}
             >
-                <div className='text-headingS text-mediumGrey mb-4'>
+                <div className=' text-headingS text-mediumGrey mb-4 md:mb-auto'>
                     <p className='uppercase ps-6 mb-5 tracking-[0.2em]'>
                         all boards (3)
                     </p>
-                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
+                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 md:me-5 rounded-e-full'>
                         <img src={BoardIcon} alt='' role='none' />
-                        <p>Platform Lunch1</p>
+                        Platform Lunch1
                     </button>
-                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
+                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 md:me-5 rounded-e-full'>
                         <img src={BoardIcon} alt='' role='none' />
                         Platform Lunch2
                     </button>
-                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full'>
+                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 md:me-5 rounded-e-full'>
                         <img src={BoardIcon} alt='' role='none' />
                         Platform Lunch3
                     </button>
-                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 rounded-e-full capitalize text-mainPurple'>
+                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 md:me-5 rounded-e-full capitalize text-mainPurple'>
                         <svg
                             width='16'
                             height='16'
@@ -46,7 +51,7 @@ const Navigation = (props: NavProps) => {
                         + Create New Board
                     </button>
                 </div>
-                <div className=' flex  justify-center items-center w-60 h-12 rounded-md bg-grayLight ms-4 me-3'>
+                <div className='flex justify-center items-center w-[235px] h-12 rounded-md bg-grayLight ms-4 md:ms-3 me-3 md:mb-4'>
                     <label htmlFor='light' className=''>
                         <img src={LightModeIcon} alt='LightModeIcon' />
                     </label>
@@ -63,6 +68,15 @@ const Navigation = (props: NavProps) => {
                     >
                         <img src={DarkModeIcon} alt='DarkModeIcon' />
                     </label>
+                </div>
+                <div className='mb-8'>
+                    <button
+                        onClick={() => setCloseNav(false)}
+                        className='hidden md:flex gap-2 text-grayMedium text-left text-headingM w-full ps-6 lg:ps-8 py-3.5'
+                    >
+                        <img src={HideNavbar} alt='' role='none' />
+                        Hide Sidebar
+                    </button>
                 </div>
             </div>
         </div>

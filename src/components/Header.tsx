@@ -11,10 +11,10 @@ import ChevronIcon from './../assets/icon-chevron-down.svg';
 type HeaderProps = {
     darkMode: boolean;
     isOpen: boolean;
-    setOpenNav: React.Dispatch<React.SetStateAction<boolean>>;
+    setToggleNav: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Header = ({ darkMode, setOpenNav, isOpen }: HeaderProps) => {
+const Header = ({ darkMode, setToggleNav, isOpen }: HeaderProps) => {
     return (
         <>
             <header
@@ -36,7 +36,7 @@ const Header = ({ darkMode, setOpenNav, isOpen }: HeaderProps) => {
                         Platform Launch
                     </h1>
                     <button
-                        onClick={() => setOpenNav(!isOpen)}
+                        onClick={() => setToggleNav(!isOpen)}
                         className={`md:hidden ${
                             isOpen ? 'rotate-180' : 'rotate-0'
                         } duration-500`}

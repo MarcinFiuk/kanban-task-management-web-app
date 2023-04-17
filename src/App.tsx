@@ -6,17 +6,23 @@ import Overlay from './components/Overlay';
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
-    const [isNavOpen, setIsNavOpen] = useState(false);
+    const [isNavOpen, setIsNavOpen] = useState(true);
 
     return (
         <div className={`relative ${darkMode ? 'dark' : ''}`}>
-            <Overlay open={isNavOpen} />
+            <div className='md:hidden'>
+                <Overlay open={isNavOpen} />
+            </div>
             <Header
                 darkMode={darkMode}
-                setOpenNav={setIsNavOpen}
+                setToggleNav={setIsNavOpen}
                 isOpen={isNavOpen}
             />
-            <Navigation darkMode={darkMode} isOpen={isNavOpen} />
+            <Navigation
+                darkMode={darkMode}
+                isOpen={isNavOpen}
+                setCloseNav={setIsNavOpen}
+            />
             <main className=''>
                 <div
                     className={`${

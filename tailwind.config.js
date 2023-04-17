@@ -12,7 +12,7 @@ export default {
             black: '#000112',
             veryDarkGrey: '#20212C',
             darkGrey: '#2B2C37',
-            mediumGrey: '#828FA3',
+            grayMedium: '#828FA3',
             grayLight: '#F4F7FD',
             lines: '#3E3F4E',
             linesLight: '#E4EBFA',
