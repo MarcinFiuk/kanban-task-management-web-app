@@ -18,15 +18,19 @@ const Header = ({ darkMode, setToggleNav, isOpen }: HeaderProps) => {
     return (
         <>
             <header
-                className={`relative flex flex-nowrap gap-4 md:gap-6 md:border-b 2xl:border-x md:border-linesLight bg-white px-4 md:px-6`}
+                className={`relative flex flex-nowrap gap-4 md:gap-6 md:border-b md:border-linesLight bg-white pe-4 md:pe-6`}
             >
-                <div className={`md:border-r md:border-r-linesLight`}>
+                <div
+                    className={`md:border-r md:border-linesLight 2xl:border-x ps-4 md:ps-6`}
+                >
                     <div className='flex items-center w-6 md:w-44 lg:w-46 h-full'>
                         <Logo darkMode={darkMode} />
                     </div>
                     <div
                         className={`hidden md:block ${
-                            isOpen ? 'md:w-59 lg:w-69 ease-in' : 'w-0 ease-out'
+                            isOpen
+                                ? 'md:w-59 lg:w-69 ease-in'
+                                : 'w-0 ease-out delay-500'
                         } duration-500 `}
                     ></div>
                 </div>

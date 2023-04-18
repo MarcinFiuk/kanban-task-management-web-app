@@ -15,29 +15,29 @@ const Navigation = (props: NavProps) => {
     return (
         <div className='absolute left-1/2 md:left-0 top-20 md:top-[68px] -translate-x-1/2 md:translate-x-0'>
             <div
-                className={`flex flex-col min-w-fit md:min-h-[calc(100vh_-_68px)] bg-white rounded-lg md:rounded-none py-4 shadow-custom md:shadow-none ${
+                className={`flex flex-col md:min-h-[calc(100vh_-_68px)] bg-white rounded-lg md:rounded-none py-4 shadow-custom md:shadow-none ${
                     isOpen
-                        ? 'scale-y-100 -translate-y-0'
-                        : 'scale-y-0 -translate-y-4'
-                } duration-500 origin-top`}
+                        ? 'scale-y-100 -translate-y-0 md:delay-500'
+                        : 'scale-y-0 -translate-y-4 '
+                } duration-500 origin-top 2xl:border-x 2xl:border-x-linesLight`}
             >
                 <div className=' text-headingS text-mediumGrey mb-4 md:mb-auto'>
                     <p className='uppercase ps-6 mb-5 tracking-[0.2em]'>
                         all boards (3)
                     </p>
-                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 md:me-5 rounded-e-full'>
+                    <button className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'>
                         <img src={BoardIcon} alt='' role='none' />
                         Platform Lunch1
                     </button>
-                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 md:me-5 rounded-e-full'>
+                    <button className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'>
                         <img src={BoardIcon} alt='' role='none' />
                         Platform Lunch2
                     </button>
-                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 md:me-5 rounded-e-full'>
+                    <button className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'>
                         <img src={BoardIcon} alt='' role='none' />
                         Platform Lunch3
                     </button>
-                    <button className='flex gap-3 py-3.5 w-60 ps-6 me-6 md:me-5 rounded-e-full capitalize text-mainPurple'>
+                    <button className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full capitalize text-mainPurple'>
                         <svg
                             width='16'
                             height='16'
@@ -51,7 +51,7 @@ const Navigation = (props: NavProps) => {
                         + Create New Board
                     </button>
                 </div>
-                <div className='flex justify-center items-center w-[235px] h-12 rounded-md bg-grayLight ms-4 md:ms-3 me-3 md:mb-4'>
+                <div className='flex justify-center items-center w-[235px] lg:w-[251px] h-12 rounded-md bg-grayLight ms-4 md:ms-3 lg:ms-6 me-3 lg:me-[25px] md:mb-4'>
                     <label htmlFor='light' className=''>
                         <img src={LightModeIcon} alt='LightModeIcon' />
                     </label>
