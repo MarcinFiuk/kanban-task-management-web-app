@@ -28,7 +28,9 @@ function App() {
                 isOpen={isNavOpen}
                 setCloseNav={setIsNavOpen}
             />
-            <Modal isOpen={isModalOpen}>Modal</Modal>
+            <Modal isOpen={isModalOpen} setCloseDialog={setIsModalOpen}>
+                Modal
+            </Modal>
             <main className=''>
                 <button
                     onClick={() => setIsNavOpen(true)}
