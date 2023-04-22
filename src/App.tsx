@@ -5,10 +5,12 @@ import Navigation from './components/Navigation';
 import Overlay from './components/Overlay';
 
 import OpenNav from './assets/icon-show-sidebar.svg';
+import { Modal } from './components/Modal';
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
-    const [isNavOpen, setIsNavOpen] = useState(true);
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <div className={`relative ${darkMode ? 'dark' : ''}`}>
@@ -19,12 +21,14 @@ function App() {
                 darkMode={darkMode}
                 setToggleNav={setIsNavOpen}
                 isOpen={isNavOpen}
+                openModal={setIsModalOpen}
             />
             <Navigation
                 darkMode={darkMode}
                 isOpen={isNavOpen}
                 setCloseNav={setIsNavOpen}
             />
+            <Modal isOpen={isModalOpen}>Modal</Modal>
             <main className=''>
                 <button
                     onClick={() => setIsNavOpen(true)}
