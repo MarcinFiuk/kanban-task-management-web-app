@@ -16,6 +16,7 @@ export default {
             grayLight: '#F4F7FD',
             lines: '#3E3F4E',
             linesLight: '#E4EBFA',
+            transparent: 'transparent',
         },
         fontFamily: {
             body: '"Plus Jakarta Sans", Roboto, sans-serif',
@@ -31,6 +32,7 @@ export default {
         },
         lineHeight: {
             l: '1.25',
+            xl: '1.8',
         },
         gridTemplateColumns: {
             headerMobile: '24px 1fr 68px',
@@ -47,9 +49,13 @@ export default {
                 65: '16.25rem',
                 69: '17.25rem',
                 75: '18.75rem',
+                86: '21.5rem',
             },
             boxShadow: {
                 custom: '0 10px 20px 0 rgba(54, 78, 126, 0.25)',
+            },
+            content: {
+                link: 'url("/src/assets/icon-chevron-down.svg")',
             },
         },
     },

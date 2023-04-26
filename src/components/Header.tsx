@@ -52,13 +52,13 @@ const Header = ({ darkMode, setToggleNav, isOpen, openModal }: HeaderProps) => {
                 <div className='flex py-4 w-[68px] md:w-[193px]'>
                     <ButtonPrimary
                         onClick={() => openModal(true)}
-                        classes='md:hidden py-2.5 bg-mainPurple basis-12'
+                        classes='md:hidden py-2.5 bg-mainPurple basis-12 text-white'
                     >
                         <img src={AddTaskIcon} alt='add task' />
                     </ButtonPrimary>
                     <ButtonPrimary
                         onClick={() => openModal(true)}
-                        classes='hidden md:block  bg-mainPurple w-41'
+                        classes='hidden md:block  bg-mainPurple w-41 text-white'
                     >
                         + Add New Task
                     </ButtonPrimary>

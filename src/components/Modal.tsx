@@ -15,12 +15,12 @@ export const Modal = ({ children, isOpen, setCloseDialog }: ModalProps) => {
     };
 
     useEffect(() => {
-        isOpen && dialogRef.current?.showModal();
+        isOpen && !dialogRef.current?.open && dialogRef.current?.showModal();
         !isOpen && dialogRef.current?.close();
     }, [isOpen]);
 
     return (
-        <dialog ref={dialogRef} onKeyDown={closeDialog}>
+        <dialog ref={dialogRef} onKeyDown={closeDialog} className='mx-auto p-0'>
             {children}
         </dialog>
     );

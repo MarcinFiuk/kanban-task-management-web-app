@@ -6,11 +6,12 @@ import Overlay from './components/Overlay';
 
 import OpenNav from './assets/icon-show-sidebar.svg';
 import { Modal } from './components/Modal';
+import Form from './components/Form';
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(true);
 
     return (
         <div className={`relative ${darkMode ? 'dark' : ''}`}>
@@ -29,7 +30,7 @@ function App() {
                 setCloseNav={setIsNavOpen}
             />
             <Modal isOpen={isModalOpen} setCloseDialog={setIsModalOpen}>
-                Modal
+                <Form object={{}} />
             </Modal>
             <main className=''>
                 <button
