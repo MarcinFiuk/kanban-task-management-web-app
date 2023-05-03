@@ -34,11 +34,8 @@ export default {
             l: '1.25',
             xl: '1.8',
         },
-        gridTemplateColumns: {
-            headerMobile: '24px 1fr 68px',
-            headerTablet: '201px 1fr 193px',
-            headerTabletOpen: '260px 1fr 193px',
-            headerDesktopOpen: '300px 1fr 193px',
+        backgroundPosition: {
+            middleRight: 'right .7em top 50%',
         },
         extend: {
             spacing: {
@@ -56,6 +53,9 @@ export default {
             },
             content: {
                 link: 'url("/src/assets/icon-chevron-down.svg")',
+            },
+            backgroundImage: {
+                chevron: 'url("/src/assets/icon-chevron-down.svg")',
             },
         },
     },

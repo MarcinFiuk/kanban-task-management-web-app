@@ -11,7 +11,7 @@ import Form from './components/Form';
 function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <div className={`relative ${darkMode ? 'dark' : ''}`}>
@@ -30,7 +30,7 @@ function App() {
                 setCloseNav={setIsNavOpen}
             />
             <Modal isOpen={isModalOpen} setCloseDialog={setIsModalOpen}>
-                <Form object={{}} />
+                <Form object={{}} setCloseDialog={setIsModalOpen} />
             </Modal>
             <main className=''>
                 <button

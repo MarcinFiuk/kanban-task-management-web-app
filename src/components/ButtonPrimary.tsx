@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef } from 'react';
 type ButtonProps = { classes?: string } & ComponentPropsWithoutRef<'button'>;
 
 const ButtonPrimary = ({ classes, children, ...props }: ButtonProps) => {
-    const className = `grid place-content-center w-full   text-headingM rounded-3xl cursor-pointer ${classes} `;
+    const className = `grid place-content-center w-full rounded-3xl cursor-pointer ${classes} `;
     return (
         <button className={className} {...props}>
             {children}

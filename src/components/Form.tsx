@@ -3,36 +3,46 @@ import ButtonPrimary from './ButtonPrimary';
 
 import CloseIcon from './../assets/icon-cross.svg';
 
-type FormProps = {
-    object: {
-        title?: string;
-        description?: string;
-        subtasks?: { title: string; isCompleted: boolean }[];
-        status?: [];
-    };
+type FormValues = {
+    title?: string;
+    description?: string;
+    subtasks?: { title: string; isCompleted: boolean }[];
+    status?: [];
 };
 
-type ReactHookFormTypes = Pick<FormProps, 'object'>;
+type FormProps = {
+    object: FormValues;
+    setCloseDialog: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const Form = ({ object }: FormProps) => {
+const Form = ({ object, setCloseDialog }: FormProps) => {
     const {
         register,
         control,
         handleSubmit,
         formState: { errors },
-    } = useForm({ defaultValues: object });
+    } = useForm<FormValues>({ defaultValues: object });
 
     const { fields, append, remove } = useFieldArray({
         name: 'subtasks',
         control,
     });
 
+    const onSubmit = (data: FormValues) => {
+        setCloseDialog(false);
+        console.log(data);
+    };
+
     return (
         <div className='w-86 p-6'>
-            <h1 className='text-headingL mb-6'>
-                {Object.hasOwn(object, 'title') ? 'Edit Task' : 'Add New Task'}
-            </h1>
-            <form>
+            <header>
+                <p className='text-headingL mb-6'>
+                    {Object.hasOwn(object, 'title')
+                        ? 'Edit Task'
+                        : 'Add New Task'}
+                </p>
+            </header>
+            <form method='dialog' onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex flex-wrap mb-6'>
                     <label
                         htmlFor='title'
@@ -117,20 +127,16 @@ const Form = ({ object }: FormProps) => {
                     >
                         Status
                     </label>
-                    <div
-                        className={`relative basis-full after:content-link after:absolute after:right-2 after:top-3 after:-z-10`}
+
+                    <select
+                        id='status'
+                        {...register('status')}
+                        className=' appearance-none block font-body text-bodyL leading-xl py-2 px-4 w-full max-w-full m-0 border rounded border-grayMedium/25 bg-chevron bg-no-repeat bg-middleRight'
                     >
-                        <select
-                            id='status'
-                            {...register('status')}
-                            className='appearance-none block font-body text-bodyL leading-xl m-0 py-2 px-4 w-full border rounded border-grayMedium/25 bg-transparent'
-                            // className='w-full text-bodyL leading-xl text-black px-4 py-2 border rounded border-grayMedium/25'
-                        >
-                            <option value='todo'>ToDo</option>
-                            <option value='doing'>Doing</option>
-                            <option value='done'>Done</option>
-                        </select>
-                    </div>
+                        <option value='todo'>ToDo</option>
+                        <option value='doing'>Doing</option>
+                        <option value='done'>Done</option>
+                    </select>
                 </div>
                 <ButtonPrimary classes='bg-mainPurple text-white text-bodyL leading-xl py-2'>
                     Create Task
