@@ -7,8 +7,7 @@ type FormValues = {
 
 type BoardFormProps = {
     object: FormValues;
-
-    setCloseDialog: React.Dispatch<React.SetStateAction<boolean>>;
+    setCloseDialog: () => void;
 };
 
 const BoardFrom = ({ object }: BoardFormProps) => {

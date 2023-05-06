@@ -12,7 +12,7 @@ type HeaderProps = {
     darkMode: boolean;
     isOpen: boolean;
     setToggleNav: React.Dispatch<React.SetStateAction<boolean>>;
-    openModal: React.Dispatch<React.SetStateAction<boolean>>;
+    openModal: () => void;
 };
 
 const Header = ({ darkMode, setToggleNav, isOpen, openModal }: HeaderProps) => {
@@ -51,13 +51,13 @@ const Header = ({ darkMode, setToggleNav, isOpen, openModal }: HeaderProps) => {
                 </div>
                 <div className='flex py-4 w-[68px] md:w-[193px]'>
                     <ButtonPrimary
-                        onClick={() => openModal(true)}
+                        onClick={openModal}
                         classes='md:hidden py-2.5 bg-mainPurple basis-12 text-white text-headingM'
                     >
                         <img src={AddTaskIcon} alt='add task' />
                     </ButtonPrimary>
                     <ButtonPrimary
-                        onClick={() => openModal(true)}
+                        onClick={openModal}
                         classes='hidden md:block  bg-mainPurple w-41 text-white text-headingM'
                     >
                         + Add New Task

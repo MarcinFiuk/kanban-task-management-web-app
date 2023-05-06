@@ -7,7 +7,7 @@ type NavProps = {
     darkMode: boolean;
     isOpen: boolean;
     setCloseNav: React.Dispatch<React.SetStateAction<boolean>>;
-    openModal: React.Dispatch<React.SetStateAction<boolean>>;
+    openModal: () => void;
 };
 
 const Navigation = (props: NavProps) => {
@@ -39,7 +39,7 @@ const Navigation = (props: NavProps) => {
                         Platform Lunch3
                     </button>
                     <button
-                        onClick={() => openModal(true)}
+                        onClick={openModal}
                         className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full capitalize text-mainPurple'
                     >
                         <svg

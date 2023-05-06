@@ -14,7 +14,7 @@ type FormValues = {
 
 type FormProps = {
     object: FormValues;
-    setCloseDialog: React.Dispatch<React.SetStateAction<boolean>>;
+    setCloseDialog: () => void;
 };
 
 const TaskForm = ({ object, setCloseDialog }: FormProps) => {
@@ -31,7 +31,7 @@ const TaskForm = ({ object, setCloseDialog }: FormProps) => {
     });
 
     const onSubmit = (data: FormValues) => {
-        setCloseDialog(false);
+        setCloseDialog();
         console.log(data);
     };
 

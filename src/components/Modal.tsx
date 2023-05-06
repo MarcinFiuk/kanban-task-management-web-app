@@ -1,8 +1,14 @@
-import { useEffect, useRef, ComponentPropsWithRef, KeyboardEvent } from 'react';
+import {
+    useEffect,
+    useRef,
+    ComponentPropsWithRef,
+    KeyboardEvent,
+    MouseEvent,
+} from 'react';
 
 type ModalProps = ComponentPropsWithRef<'dialog'> & {
     isOpen: boolean;
-    setCloseDialog: React.Dispatch<React.SetStateAction<boolean>>;
+    setCloseDialog: () => void;
 };
 
 export const Modal = ({ children, isOpen, setCloseDialog }: ModalProps) => {
@@ -12,12 +18,12 @@ export const Modal = ({ children, isOpen, setCloseDialog }: ModalProps) => {
         e: KeyboardEvent<HTMLDialogElement>
     ) => {
         if (e.code === 'Escape') {
-            setCloseDialog(false);
+            setCloseDialog();
         }
     };
 
     const closeDialogOnClickingBackground = (
-        e: React.MouseEvent<HTMLDialogElement, MouseEvent>
+        e: MouseEvent<HTMLDialogElement, globalThis.MouseEvent>
     ) => {
         const dialogDimensions = dialogRef?.current?.getBoundingClientRect();
         if (
@@ -27,7 +33,7 @@ export const Modal = ({ children, isOpen, setCloseDialog }: ModalProps) => {
                 e.clientY < dialogDimensions.top ||
                 e.clientY > dialogDimensions.bottom)
         ) {
-            setCloseDialog(false);
+            setCloseDialog();
         }
     };
 
@@ -41,7 +47,7 @@ export const Modal = ({ children, isOpen, setCloseDialog }: ModalProps) => {
             ref={dialogRef}
             onKeyDown={closeDialogOnPressingEscape}
             className='mx-auto p-0'
-            onClick={closeDialogOnClickingBackground}
+            onClick={(e) => closeDialogOnClickingBackground(e)}
         >
             {children}
         </dialog>
