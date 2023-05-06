@@ -34,7 +34,7 @@ const Form = ({ object, setCloseDialog }: FormProps) => {
     };
 
     return (
-        <div className='w-86 p-6'>
+        <div className='w-86 md:w-120 p-6 md:p-8'>
             <header>
                 <p className='text-headingL mb-6'>
                     {Object.hasOwn(object, 'title')

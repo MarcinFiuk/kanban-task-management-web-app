@@ -47,6 +47,7 @@ export default {
                 69: '17.25rem',
                 75: '18.75rem',
                 86: '21.5rem',
+                120: '30rem',
             },
             boxShadow: {
                 custom: '0 10px 20px 0 rgba(54, 78, 126, 0.25)',
