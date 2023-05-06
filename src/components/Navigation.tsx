@@ -7,10 +7,11 @@ type NavProps = {
     darkMode: boolean;
     isOpen: boolean;
     setCloseNav: React.Dispatch<React.SetStateAction<boolean>>;
+    openModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Navigation = (props: NavProps) => {
-    const { darkMode, isOpen, setCloseNav } = props;
+    const { darkMode, isOpen, openModal, setCloseNav } = props;
 
     return (
         <div className='absolute left-1/2 md:left-0 top-20 md:top-[68px] -translate-x-1/2 md:translate-x-0'>
@@ -37,7 +38,10 @@ const Navigation = (props: NavProps) => {
                         <img src={BoardIcon} alt='' role='none' />
                         Platform Lunch3
                     </button>
-                    <button className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full capitalize text-mainPurple'>
+                    <button
+                        onClick={() => openModal(true)}
+                        className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full capitalize text-mainPurple'
+                    >
                         <svg
                             width='16'
                             height='16'

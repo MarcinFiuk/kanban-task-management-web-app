@@ -7,7 +7,6 @@ type ModalProps = ComponentPropsWithRef<'dialog'> & {
 
 export const Modal = ({ children, isOpen, setCloseDialog }: ModalProps) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
-    const childrenWrapperRef = useRef<HTMLDivElement>(null);
 
     const closeDialogOnPressingEscape = (
         e: KeyboardEvent<HTMLDialogElement>

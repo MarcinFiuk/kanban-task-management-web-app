@@ -6,12 +6,16 @@ import Overlay from './components/Overlay';
 
 import OpenNav from './assets/icon-show-sidebar.svg';
 import { Modal } from './components/Modal';
-import Form from './components/Form';
+import TaskForm from './components/Forms/TaskForm';
+import BoardFrom from './components/Forms/BoardFrom';
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [isNavOpen, setIsNavOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState({
+        task: false,
+        board: false,
+    });
 
     return (
         <div className={`relative ${darkMode ? 'dark' : ''}`}>
@@ -22,15 +26,48 @@ function App() {
                 darkMode={darkMode}
                 setToggleNav={setIsNavOpen}
                 isOpen={isNavOpen}
-                openModal={setIsModalOpen}
+                openModal={() =>
+                    setIsModalOpen((prev) => {
+                        return { ...prev, task: true };
+                    })
+                }
             />
             <Navigation
                 darkMode={darkMode}
                 isOpen={isNavOpen}
                 setCloseNav={setIsNavOpen}
+                openModal={() =>
+                    setIsModalOpen((prev) => {
+                        return { ...prev, board: true };
+                    })
+                }
             />
-            <Modal isOpen={isModalOpen} setCloseDialog={setIsModalOpen}>
-                <Form object={{}} setCloseDialog={setIsModalOpen} />
+            <Modal
+                isOpen={isModalOpen.board || isModalOpen.task}
+                setCloseDialog={() =>
+                    setIsModalOpen({ task: false, board: false })
+                }
+            >
+                {isModalOpen.task && (
+                    <TaskForm
+                        object={{}}
+                        setCloseDialog={() =>
+                            setIsModalOpen((prev) => {
+                                return { ...prev, task: false };
+                            })
+                        }
+                    />
+                )}
+                {isModalOpen.board && (
+                    <BoardFrom
+                        object={{}}
+                        setCloseDialog={() =>
+                            setIsModalOpen((prev) => {
+                                return { ...prev, board: false };
+                            })
+                        }
+                    />
+                )}
             </Modal>
             <main className=''>
                 <button
