@@ -1,7 +1,9 @@
-import { useForm, SubmitHandler, useFieldArray } from 'react-hook-form';
-import ButtonPrimary from './ButtonPrimary';
+import { useForm, useFieldArray } from 'react-hook-form';
 
-import CloseIcon from './../assets/icon-cross.svg';
+import { isEmpty } from './../../helpers/FormHelpers';
+
+import ButtonPrimary from '../ButtonPrimary';
+import CloseIcon from './../../assets/icon-cross.svg';
 
 type FormValues = {
     title?: string;
@@ -15,7 +17,7 @@ type FormProps = {
     setCloseDialog: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Form = ({ object, setCloseDialog }: FormProps) => {
+const TaskForm = ({ object, setCloseDialog }: FormProps) => {
     const {
         register,
         control,
@@ -37,9 +39,7 @@ const Form = ({ object, setCloseDialog }: FormProps) => {
         <div className='w-86 md:w-120 p-6 md:p-8'>
             <header>
                 <p className='text-headingL mb-6'>
-                    {Object.hasOwn(object, 'title')
-                        ? 'Edit Task'
-                        : 'Add New Task'}
+                    {isEmpty(object) ? 'Add New Task' : 'Edit Task'}
                 </p>
             </header>
             <form method='dialog' onSubmit={handleSubmit(onSubmit)}>
@@ -146,4 +146,4 @@ const Form = ({ object, setCloseDialog }: FormProps) => {
     );
 };
 
-export default Form;
+export default TaskForm;
