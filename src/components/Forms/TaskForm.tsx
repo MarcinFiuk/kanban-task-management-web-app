@@ -42,7 +42,7 @@ const TaskForm = ({ object, setCloseDialog }: FormProps) => {
                     {isEmpty(object) ? 'Add New Task' : 'Edit Task'}
                 </p>
             </header>
-            <form method='dialog' onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex flex-wrap mb-6'>
                     <label
                         htmlFor='title'
@@ -53,9 +53,9 @@ const TaskForm = ({ object, setCloseDialog }: FormProps) => {
                     <input
                         type='text'
                         id='title'
+                        {...register('title')}
                         placeholder='e.g. Take coffee break'
                         className='basis-full text-bodyL leading-xl text-black px-4 py-2 border rounded border-grayMedium/25 placeholder:text-bodyL placeholder:leading-xl placeholder:text-black/25'
-                        {...register('title')}
                     />
                 </div>
                 <div className='flex flex-wrap mb-6'>
@@ -74,10 +74,7 @@ const TaskForm = ({ object, setCloseDialog }: FormProps) => {
                     />
                 </div>
                 <div className='flex flex-wrap mb-6'>
-                    <label
-                        htmlFor='subtasks'
-                        className='text-headingS text-grayMedium mb-2 tracking-normal'
-                    >
+                    <label className='text-headingS text-grayMedium mb-2 tracking-normal'>
                         Subtasks
                     </label>
                     <div className='basis-full '>
