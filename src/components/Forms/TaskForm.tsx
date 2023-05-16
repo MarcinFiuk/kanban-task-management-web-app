@@ -1,6 +1,6 @@
 import { useForm, useFieldArray } from 'react-hook-form';
 
-import { isEmpty } from './../../helpers/FormHelpers';
+import { isEmpty } from '../../helpers/formHelpers';
 
 import ButtonPrimary from '../ButtonPrimary';
 import CloseIcon from './../../assets/icon-cross.svg';
