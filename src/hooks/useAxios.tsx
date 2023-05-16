@@ -1,48 +1,47 @@
 import { useState, useEffect } from 'react';
-import { AxiosRequestConfig } from 'axios';
+import { AxiosInstance, AxiosRequestConfig } from 'axios';
 
-type AxiosHookProps = {
-    axiosInstance: AxiosRequestConfig;
-    method: Pick<AxiosRequestConfig, 'method'>;
+import { getErrorMessage } from './../helpers/fetchHelpers';
+
+type ConfigObjectProps = {
+    axiosInstance: AxiosInstance;
+    method: 'get' | 'post' | 'delete' | 'patch' | 'put';
     url: string;
-    requestConfig: {};
+    requestConfig?: AxiosRequestConfig;
 };
 
-const useAxios = () => {
+const useAxios = (configObj: ConfigObjectProps) => {
+    const { axiosInstance, method, url, requestConfig = {} } = configObj;
+
     const [response, setResponse] = useState([]);
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false); //different!
-    const [controller, setController] = useState<null | AbortController>();
-
-    const axiosFetch = async (configObj: AxiosHookProps) => {
-        const { axiosInstance, method, url, requestConfig = {} } = configObj;
-
-        try {
-            setLoading(true);
-            const ctrl = new AbortController();
-            setController(ctrl);
-            const res = await axiosInstance[method](url, {
-                ...requestConfig,
-                signal: ctrl.signal,
-            });
-            console.log(res);
-            setResponse(res.data);
-        } catch (err) {
-            console.log(err.message);
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        console.log(controller);
+        const controller = new AbortController();
 
-        // useEffect cleanup function
-        return () => controller && controller.abort();
-    }, [controller]);
+        const fetchData = async () => {
+            try {
+                const res = await axiosInstance[method](url, {
+                    ...requestConfig,
+                    signal: controller.signal,
+                });
+                console.log(res);
+                setResponse(res.data);
+            } catch (err) {
+                const errorMessage = getErrorMessage(err);
+                setError(errorMessage);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    return [response, error, loading, axiosFetch];
+        fetchData();
+
+        return () => controller.abort();
+    }, []);
+
+    return [response, error, loading];
 };
 
 export default useAxios;
