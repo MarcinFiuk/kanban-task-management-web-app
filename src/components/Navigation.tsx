@@ -2,16 +2,31 @@ import BoardIcon from '../assets/icon-board.svg';
 import LightModeIcon from '../assets/icon-light-theme.svg';
 import DarkModeIcon from '../assets/icon-dark-theme.svg';
 import HideNavbar from '../assets/icon-hide-sidebar.svg';
+import useAxios from '../hooks/useAxios';
+import axios from './../apis/boardsAPI';
 
 type NavProps = {
     darkMode: boolean;
     isOpen: boolean;
     setCloseNav: React.Dispatch<React.SetStateAction<boolean>>;
     openModal: () => void;
+    boards: string[];
 };
 
 const Navigation = (props: NavProps) => {
-    const { darkMode, isOpen, openModal, setCloseNav } = props;
+    const { darkMode, isOpen, openModal, setCloseNav, boards } = props;
+
+    const boardsComponent = boards?.map((board) => {
+        return (
+            <button
+                key={board}
+                className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'
+            >
+                <img src={BoardIcon} alt='' role='none' />
+                {board}
+            </button>
+        );
+    });
 
     return (
         <div className='absolute left-1/2 md:left-0 top-20 md:top-[68px] -translate-x-1/2 md:translate-x-0'>
@@ -24,20 +39,10 @@ const Navigation = (props: NavProps) => {
             >
                 <div className=' text-headingS text-mediumGrey mb-4 md:mb-auto'>
                     <p className='uppercase ps-6 mb-5 tracking-[0.2em]'>
-                        all boards (3)
+                        {`all boards (${boards?.length})`}
                     </p>
-                    <button className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'>
-                        <img src={BoardIcon} alt='' role='none' />
-                        Platform Lunch1
-                    </button>
-                    <button className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'>
-                        <img src={BoardIcon} alt='' role='none' />
-                        Platform Lunch2
-                    </button>
-                    <button className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'>
-                        <img src={BoardIcon} alt='' role='none' />
-                        Platform Lunch3
-                    </button>
+                    {boardsComponent}
+
                     <button
                         onClick={openModal}
                         className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full capitalize text-mainPurple'

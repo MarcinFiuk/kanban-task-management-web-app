@@ -1,13 +1,29 @@
 import { useState } from 'react';
 
+import useAxios from './hooks/useAxios';
+import axios from './apis/boardsAPI';
+
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Overlay from './components/Overlay';
-
-import OpenNav from './assets/icon-show-sidebar.svg';
 import { Modal } from './components/Modal';
 import TaskForm from './components/Forms/TaskForm';
 import BoardFrom from './components/Forms/BoardFrom';
+
+import OpenNav from './assets/icon-show-sidebar.svg';
+
+type ResponseType = {
+    name: string;
+    columns: {
+        name: string;
+        tasks: {
+            description: string;
+            status: string;
+            subtasks: { title: string; isCompleted: boolean }[];
+            title: string;
+        }[];
+    }[];
+}[];
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
@@ -16,6 +32,14 @@ function App() {
         task: false,
         board: false,
     });
+
+    const { data, error, loading } = useAxios<ResponseType>({
+        axiosInstance: axios,
+        method: 'get',
+        url: '/boards',
+    });
+
+    const boards = data?.map((board) => board.name);
 
     return (
         <div className={`relative ${darkMode ? 'dark' : ''}`}>
@@ -41,6 +65,7 @@ function App() {
                         return { ...prev, board: true };
                     })
                 }
+                boards={boards}
             />
             <Modal
                 isOpen={isModalOpen.board || isModalOpen.task}
