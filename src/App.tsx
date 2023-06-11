@@ -1,8 +1,5 @@
 import { useState } from 'react';
 
-import useAxios from './hooks/useAxios';
-import axios from './apis/boardsAPI';
-
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Overlay from './components/Overlay';
@@ -12,7 +9,7 @@ import BoardFrom from './components/Forms/BoardFrom';
 
 import OpenNav from './assets/icon-show-sidebar.svg';
 
-type ResponseType = {
+interface ResponseType {
     name: string;
     columns: {
         name: string;
@@ -23,7 +20,8 @@ type ResponseType = {
             title: string;
         }[];
     }[];
-}[];
+}
+[];
 
 function App() {
     const [darkMode, setDarkMode] = useState(false);
@@ -32,14 +30,6 @@ function App() {
         task: false,
         board: false,
     });
-
-    const { data, error, loading } = useAxios<ResponseType>({
-        axiosInstance: axios,
-        method: 'get',
-        url: '/boards',
-    });
-
-    const boards = data?.map((board) => board.name);
 
     return (
         <div className={`relative ${darkMode ? 'dark' : ''}`}>
@@ -65,7 +55,6 @@ function App() {
                         return { ...prev, board: true };
                     })
                 }
-                boards={boards}
             />
             <Modal
                 isOpen={isModalOpen.board || isModalOpen.task}

@@ -1,5 +1,5 @@
 {
-    "boards": [
+    "boardsContent": [
         {
             "name": "Platform Launch",
             "columns": [
@@ -426,5 +426,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "boardsName": ["Platform Launch", "Marketing Plan", "Roadmap"]
 }

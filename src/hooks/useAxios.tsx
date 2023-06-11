@@ -46,7 +46,7 @@
 // export default useAxios;
 
 import { useState, useEffect } from 'react';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { getErrorMessage } from './../helpers/fetchHelpers';
 
 type ConfigObject = {
