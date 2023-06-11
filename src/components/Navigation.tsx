@@ -42,22 +42,26 @@ const Navigation = (props: NavProps) => {
     const boardsComponent =
         (loading && <p> LOADING...</p>) ||
         (!loading && error && <p>{error}</p>) ||
-        (!loading && !error && !data && createNewBoardButton) ||
+        (!loading && !error && !data && <nav>createNewBoardButton</nav>) ||
         (!loading && !error && data && (
-            <>
-                {data.map((board) => {
-                    return (
-                        <button
-                            key={board}
-                            className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'
-                        >
-                            <img src={BoardIcon} alt='' role='none' />
-                            {board}
-                        </button>
-                    );
-                })}
-                {createNewBoardButton}
-            </>
+            <nav>
+                <ul>
+                    {data.map((board) => {
+                        return (
+                            <li>
+                                <button
+                                    key={board}
+                                    className='flex gap-3 py-3.5 w-60 lg:w-69 ps-6 lg:ps-8 me-6 md:me-5 rounded-e-full'
+                                >
+                                    <img src={BoardIcon} alt='' role='none' />
+                                    {board}
+                                </button>
+                            </li>
+                        );
+                    })}
+                    <li> {createNewBoardButton}</li>
+                </ul>
+            </nav>
         ));
 
     const boardsNumber =
@@ -66,7 +70,7 @@ const Navigation = (props: NavProps) => {
         (!data && 'error');
 
     return (
-        <div className='absolute left-1/2 md:left-0 top-20 md:top-[68px] -translate-x-1/2 md:translate-x-0'>
+        <aside className='absolute left-1/2 md:left-0 top-20 md:top-[68px] -translate-x-1/2 md:translate-x-0'>
             <div
                 className={`flex flex-col md:min-h-[calc(100vh_-_68px)] bg-white rounded-lg md:rounded-none py-4 shadow-custom md:shadow-none ${
                     isOpen
@@ -74,6 +78,7 @@ const Navigation = (props: NavProps) => {
                         : 'scale-y-0 -translate-y-4 '
                 } duration-500 origin-top 2xl:border-x 2xl:border-x-linesLight`}
             >
+                {/* boards */}
                 <div className=' text-headingS text-mediumGrey mb-4 md:mb-auto'>
                     <p className='uppercase ps-6 mb-5 tracking-[0.2em]'>
                         {boardsNumber}
@@ -110,7 +115,7 @@ const Navigation = (props: NavProps) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </aside>
     );
 };
 
